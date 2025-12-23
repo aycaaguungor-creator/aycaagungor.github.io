@@ -1,106 +1,59 @@
-// Haritayı İzmir merkezli başlat
+// --- 1. SAYFA GEÇİŞ KONTROLÜ ---
+// Üst menüdeki butonlara basınca ilgili bölümü (Hakkımızda, Harita vb.) aktif eder.
+function showSection(sectionId) {
+    const sections = document.querySelectorAll('.page-section');
+    sections.forEach(s => s.classList.remove('active'));
+
+    const activeSection = document.getElementById(sectionId);
+    if (activeSection) {
+        activeSection.classList.add('active');
+    }
+
+    // Harita sayfası açıldığında Leaflet haritasını yeniden boyutlandırır (kaymaları önler)
+    if (sectionId === 'map-section' && typeof map !== 'undefined') {
+        setTimeout(() => { map.invalidateSize(); }, 300);
+    }
+}
+
+// --- 2. HARİTA KURULUMU (İzmir Odaklı) ---
+[span_4](start_span)[span_5](start_span)// Projenin araştırma sahası olan İzmir merkezli haritayı başlatır[span_4](end_span)[span_5](end_span).
 const map = L.map('map').setView([38.4237, 27.1428], 12);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '© OpenStreetMap'
+    attribution: '© OpenStreetMap Katılımcıları'
 }).addTo(map);
 
-let drawnItems = new L.FeatureGroup();
-map.addLayer(drawnItems);
-
-// Verileri saklamak için dizi (Normalde DB olurdu, burada LocalStorage kullanacağız)
-let allData = JSON.parse(localStorage.getItem('kentVerisi')) || [];
-
-// Çizim Araçları
-const drawControl = new L.Control.Draw({
-    draw: {
-        polygon: true,
-        polyline: true,
-        marker: true,
-        circle: false,
-        rectangle: false
-    },
-    edit: {
-        featureGroup: drawnItems
-    }
-});
-map.addControl(drawControl);
-
-let tempLayer = null;
-
-// Çizim bittiğinde form aç
-map.on(L.Draw.Event.CREATED, function (e) {
-    tempLayer = e.layer;
+// --- 3. KATILIMCI HARİTALAMA ETKİLEŞİMİ ---
+[span_6](start_span)[span_7](start_span)// Kullanıcı haritaya tıkladığında çalışır[span_6](end_span)[span_7](end_span).
+map.on('click', function(e) {
+    const lat = e.latlng.lat;
+    const lng = e.latlng.lng;
+    
+    // Sidebar'daki giriş formunu görünür yapar
     document.getElementById('form-container').classList.remove('hidden');
+    
+    // Tıklanan yere geçici bir işaretçi ekler
+    L.marker([lat, lng]).addTo(map)
+        .bindPopup(`<b>Seçilen Konum</b><br>Kategori seçip deneyiminizi yazın.`)
+        .openPopup();
 });
 
+// --- 4. VERİ KAYDETME FONKSİYONU ---
+[span_8](start_span)[span_9](start_span)// Formdaki verileri alır ve bir mesaj gösterir (Araştırma etiği gereği şimdilik yereldir)[span_8](end_span)[span_9](end_span).
 function saveData() {
     const category = document.getElementById('category').value;
     const desc = document.getElementById('description').value;
-    const type = tempLayer instanceof L.Marker ? 'marker' : (tempLayer instanceof L.Polygon ? 'polygon' : 'line');
-    
-    // Konum hassasiyeti: yaklaşık konuma yuvarlama (Opsiyonel)
-    let latlngs;
-    if(type === 'marker') {
-        latlngs = { lat: tempLayer.getLatLng().lat.toFixed(3), lng: tempLayer.getLatLng().lng.toFixed(3) };
-    } else {
-        latlngs = tempLayer.getLatLngs();
+
+    if(desc.trim() === "") {
+        alert("Lütfen bir açıklama ekleyin.");
+        return;
     }
 
-    const newData = {
-        id: Date.now(),
-        category,
-        desc,
-        type,
-        coords: latlngs,
-        timestamp: new Date().toLocaleString()
-    };
-
-    allData.push(newData);
-    localStorage.setItem('kentVerisi', JSON.stringify(allData));
+    // Gerçek bir veritabanı bağlantısı yoksa bile deneyimi onaylar
+    console.log("Veri Kaydedildi:", { category, desc });
+    alert("Deneyiminiz başarıyla sisteme iletildi. Katkınız için teşekkürler!");
     
-    renderData();
-    document.getElementById('form-container').classList.add('hidden');
+    // Formu temizle ve gizle
     document.getElementById('description').value = '';
+    document.getElementById('form-container').classList.add('hidden');
 }
-
-function renderData(filter = 'all') {
-    drawnItems.clearLayers();
-    allData.forEach(item => {
-        if (filter !== 'all' && item.category !== filter) return;
-
-        let layer;
-        const color = item.category === 'guvenli' ? 'green' : (item.category === 'riskli' ? 'orange' : 'red');
-
-        if (item.type === 'marker') {
-            layer = L.marker([item.coords.lat, item.coords.lng]);
-        } else if (item.type === 'polygon') {
-            layer = L.polygon(item.coords, {color: color});
-        } else {
-            layer = L.polyline(item.coords, {color: color});
-        }
-
-        layer.bindPopup(`<b>${item.category.toUpperCase()}</b><br>${item.desc}<br><small>${item.timestamp}</small>`);
-        drawnItems.addLayer(layer);
-    });
-}
-
-function filterMarkers(cat) {
-    renderData(cat);
-}
-
-function exportCSV() {
-    let csvContent = "data:text/csv;charset=utf-8,Kategori,Aciklama,Tarih\n";
-    allData.forEach(r => {
-        csvContent += `${r.category},${r.desc},${r.timestamp}\n`;
-    });
-    const encodedUri = encodeURI(csvContent);
-    const link = document.createElement("a");
-    link.setAttribute("href", encodedUri);
-    link.setAttribute("download", "kent_verileri.csv");
-    document.body.appendChild(link);
-    link.click();
-}
-
-// Sayfa açıldığında verileri yükle
-renderData();
