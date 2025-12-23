@@ -12,7 +12,12 @@
 
     <nav class="navbar">
         <div class="nav-container">
-            <h1 class="logo">KENTİN GÖRÜNMEZ SINIRLARI</h1>
+            <h1 class="logo" onclick="showSection('hero-page')">KENTİN GÖRÜNMEZ SINIRLARI</h1>
+            <div class="nav-links">
+                <span onclick="showSection('map-section')">Harita</span>
+                <span onclick="showSection('content-section')">İçerikler</span>
+                <span onclick="showSection('about-section')">Hakkımızda</span>
+            </div>
             <div class="search-bar">
                 <input type="text" placeholder="Ara...">
                 <button>🔍</button>
@@ -20,35 +25,81 @@
         </div>
     </nav>
 
-    <header class="hero">
-        <div class="hero-image">
-            <img src="https://via.placeholder.com/800x300?text=She+RISES+Gorseli" alt="Hero">
-        </div>
-        <h2>Deneyimini paylaş, şehrin sınırlarını yeniden çiz.</h2>
-        <a href="#map-section" class="btn-main">Haritayı Aç</a>
-    </header>
+    <section id="hero-page" class="page-section active">
+        <header class="hero">
+            <div class="hero-image">
+                <img src="hero.png" alt="She Rises Illustration" onerror="this.src='https://via.placeholder.com/800x400?text=Gorseli+Klasore+Yukleyin'">
+            </div>
+            <div class="hero-text">
+                <h2>Deneyimini paylaş, şehrin sınırlarını yeniden çiz.</h2>
+                <div class="hero-action">
+                    <button class="btn-map-open" onclick="showSection('map-section')">📍 Haritayı Aç</button>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+            </div>
+        </header>
+    </section>
 
-    <section id="map-section" class="map-container">
-        <div id="map"></div>
-        <div class="map-sidebar">
-            <h3>Veri Ekle / Filtrele</h3>
-            <div class="filters">
-                <button onclick="filterMarkers('all')">Hepsi</button>
-                <button onclick="filterMarkers('guvenli')" class="f-green">Güvenli</button>
-                <button onclick="filterMarkers('riskli')" class="f-orange">Riskli</button>
-                <button onclick="filterMarkers('guvensiz')" class="f-red">Güvensiz</button>
+    <section id="map-section" class="page-section">
+        <div class="map-layout">
+            <div id="map"></div>
+            <div class="map-sidebar">
+                <h3>Harita Nasıl Kullanılır?</h3>
+                <div class="filter-group">
+                    <button onclick="filterMarkers('guvenli')" class="f-btn g-blue">● Güvenli</button>
+                    <button onclick="filterMarkers('riskli')" class="f-btn g-orange">● Riskli</button>
+                    <button onclick="filterMarkers('guvensiz')" class="f-btn g-red">● Güvensiz</button>
+                </div>
+                <div id="form-container" class="hidden">
+                    <h4>Yeni Deneyim Ekle</h4>
+                    <textarea id="description" placeholder="Bu alan hakkında ne hissediyorsun?"></textarea>
+                    <button class="save-btn" onclick="saveData()">Kaydet</button>
+                </div>
             </div>
-            <div id="form-container" class="hidden">
-                <h4>Yeni Kayıt</h4>
-                <select id="category">
-                    <option value="guvenli">Güvenli (Mavi/Yeşil)</option>
-                    <option value="riskli">Riskli (Turuncu)</option>
-                    <option value="guvensiz">Güvensiz (Kırmızı)</option>
-                </select>
-                <textarea id="description" placeholder="Açıklama ekleyin..."></textarea>
-                <button onclick="saveData()">Gönder</button>
+        </div>
+    </section>
+
+    <section id="content-section" class="page-section">
+        <div class="content-container">
+            <h2>İÇERİKLERİMİZ</h2>
+            <h3>YouTube İçerikleri</h3>
+            <div class="video-placeholder">
+                <iframe width="100%" height="315" src="https://www.youtube.com/embed/tbnv9S-XKoY" frameborder="0" allowfullscreen></iframe>
             </div>
-            <button class="export-btn" onclick="exportCSV()">Verileri İndir (CSV)</button>
+            <h3>Instagram İçeriklerimiz</h3>
+            <div class="insta-grid">
+                <div class="insta-card">Lorem Ipsum</div>
+                <div class="insta-card">Lorem Ipsum</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about-section" class="page-section">
+        <div class="about-container">
+            <h2>HAKKIMIZDA</h2>
+            <div class="about-grid">
+                <div>
+                    <h3>Projenin Amacı</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                </div>
+                <div class="partners">
+                    <h3>Paydaşlarımız</h3>
+                    <div class="partner-icons">
+                        <div class="p-icon">Logo</div>
+                        <div class="p-icon">Logo</div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="contact-footer">
+                <h3>Bizimle İletişime Geçin</h3>
+                <div class="contact-grid">
+                    <span>📞 05xx xxx xx xx</span>
+                    <span>📸 @instagramhesabi</span>
+                    <span>✉️ eposta@adresiniz.com</span>
+                    <span>🎥 YouTube Kanalı</span>
+                </div>
+            </div>
         </div>
     </section>
 
