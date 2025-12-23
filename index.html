@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kentin Görünmez Sınırları</title>
+    <title>Kentin Görünmez Sınırları | Ayça Güngör</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css"/>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <nav class="navbar">
         <div class="nav-container">
             <h1 class="logo" onclick="showSection('hero-page')">KENTİN GÖRÜNMEZ SINIRLARI</h1>
@@ -18,93 +17,53 @@
                 <span onclick="showSection('content-section')">İçerikler</span>
                 <span onclick="showSection('about-section')">Hakkımızda</span>
             </div>
-            <div class="search-bar">
-                <input type="text" placeholder="Ara...">
-                <button>🔍</button>
-            </div>
         </div>
     </nav>
 
     <section id="hero-page" class="page-section active">
         <header class="hero">
             <div class="hero-image">
-                <img src="hero.png" alt="She Rises Illustration" onerror="this.src='https://via.placeholder.com/800x400?text=Gorseli+Klasore+Yukleyin'">
+                <img src="banner.jpg" alt="Proje Banner" onerror="this.src='https://via.placeholder.com/1200x500/7B61FF/FFFFFF?text=Banner+Gorselini+Yukleyin'">
             </div>
             <div class="hero-text">
-                <h2>Deneyimini paylaş, şehrin sınırlarını yeniden çiz.</h2>
-                <div class="hero-action">
-                    <button class="btn-map-open" onclick="showSection('map-section')">📍 Haritayı Aç</button>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                </div>
+                <h2>Hissettiğin Güvensizlik, <br>Haritada Görünsün.</h2>
+                <button class="btn-main" onclick="showSection('map-section')">Haritayı Keşfet</button>
             </div>
         </header>
     </section>
 
-    <section id="map-section" class="page-section">
-        <div class="map-layout">
-            <div id="map"></div>
-            <div class="map-sidebar">
-                <h3>Harita Nasıl Kullanılır?</h3>
-                <div class="filter-group">
-                    <button onclick="filterMarkers('guvenli')" class="f-btn g-blue">● Güvenli</button>
-                    <button onclick="filterMarkers('riskli')" class="f-btn g-orange">● Riskli</button>
-                    <button onclick="filterMarkers('guvensiz')" class="f-btn g-red">● Güvensiz</button>
-                </div>
-                <div id="form-container" class="hidden">
-                    <h4>Yeni Deneyim Ekle</h4>
-                    <textarea id="description" placeholder="Bu alan hakkında ne hissediyorsun?"></textarea>
-                    <button class="save-btn" onclick="saveData()">Kaydet</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="content-section" class="page-section">
-        <div class="content-container">
-            <h2>İÇERİKLERİMİZ</h2>
-            <h3>YouTube İçerikleri</h3>
-            <div class="video-placeholder">
-                <iframe width="100%" height="315" src="https://www.youtube.com/embed/tbnv9S-XKoY" frameborder="0" allowfullscreen></iframe>
-            </div>
-            <h3>Instagram İçeriklerimiz</h3>
-            <div class="insta-grid">
-                <div class="insta-card">Lorem Ipsum</div>
-                <div class="insta-card">Lorem Ipsum</div>
-            </div>
-        </div>
-    </section>
-
     <section id="about-section" class="page-section">
-        <div class="about-container">
-            <h2>HAKKIMIZDA</h2>
+        <div class="container">
+            <h2 class="section-title">HAKKIMIZDA</h2>
+            <div class="about-intro">
+                [span_8](start_span)[span_9](start_span)<p>Bu araştırma, İzmir’de yaşayan kadınların ve LGBTİ+ bireylerin kentte deneyimledikleri fiziksel ve duygusal güvenlik sorunlarını ortaya çıkarmayı amaçlayan nitel bir çalışmadır[span_8](end_span)[span_9](end_span).</p>
+            </div>
             <div class="about-grid">
-                <div>
-                    <h3>Projenin Amacı</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                <div class="info-card">
+                    <h3>Araştırma Hedefleri</h3>
+                    [span_10](start_span)[span_11](start_span)<p>Katılımcı haritalama tekniğiyle güvende/güvensiz hissedilen kentsel mekânları belirlemek ve bu verileri görselleştirmek[span_10](end_span)[span_11](end_span).</p>
                 </div>
-                <div class="partners">
-                    <h3>Paydaşlarımız</h3>
-                    <div class="partner-icons">
-                        <div class="p-icon">Logo</div>
-                        <div class="p-icon">Logo</div>
-                    </div>
+                <div class="info-card">
+                    <h3>Metodoloji</h3>
+                    [span_12](start_span)[span_13](start_span)[span_14](start_span)<p>Odak grup görüşmeleri ve "Participatory Network Mapping" (Katılımcı Ağ Haritalama) tekniği kullanılmaktadır[span_12](end_span)[span_13](end_span)[span_14](end_span).</p>
                 </div>
             </div>
-            <hr>
-            <div class="contact-footer">
-                <h3>Bizimle İletişime Geçin</h3>
-                <div class="contact-grid">
-                    <span>📞 05xx xxx xx xx</span>
-                    <span>📸 @instagramhesabi</span>
-                    <span>✉️ eposta@adresiniz.com</span>
-                    <span>🎥 YouTube Kanalı</span>
+            <div class="stakeholders">
+                <div class="person-card">
+                    <h3>Proje Yürütücüsü</h3>
+                    <p class="name">Ayça Güngör</p>
+                    [span_15](start_span)[span_16](start_span)<p>Yeni Medya ve İletişim 4. Sınıf Öğrencisi[span_15](end_span)[span_16](end_span)</p>
+                </div>
+                <div class="partners-card">
+                    <h3>Paydaşlarımız</h3>
+                    [span_17](start_span)[span_18](start_span)<p>İzmir Kent Konseyi[span_17](end_span)[span_18](end_span)</p>
+                    [span_19](start_span)<p>İzmir Kent Konseyi Kadın Meclisi[span_19](end_span)</p>
                 </div>
             </div>
         </div>
     </section>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
