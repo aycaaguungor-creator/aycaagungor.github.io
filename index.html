@@ -1,46 +1,73 @@
-<section id="about-section" class="page-section">
-    <div class="about-container">
-        <h2 class="section-title">HAKKIMIZDA</h2>
-        
-        <div class="about-intro">
-            <p class="highlight-text">İzmir’de Kadınların ve LGBTİ+ Bireylerin Fiziksel ve Duygusal Güvenlik Deneyimleri Üzerine Nitel Bir Araştırma</p>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kentin Görünmez Sınırları | Ayça Güngör</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1 class="logo" onclick="showSection('hero-page')">KENTİN GÖRÜNMEZ SINIRLARI</h1>
+            <div class="nav-links">
+                <span onclick="showSection('map-section')">Harita</span>
+                <span onclick="showSection('content-section')">İçerikler</span>
+                <span onclick="showSection('about-section')">Hakkımızda</span>
+            </div>
         </div>
+    </nav>
 
-        <div class="about-grid">
-            <div class="info-card">
-                <h3 class="card-subtitle">Projenin Amacı</h3>
-                [span_0](start_span)<p>Bu araştırma, İzmir’de yaşayan kadınların ve LGBTİ+ bireylerin kentte deneyimledikleri fiziksel ve duygusal güvenlik sorunlarını ortaya çıkarmayı hedeflemektedir[span_0](end_span). [span_1](start_span)Gündelik yaşamdaki güvensizlik hâllerinin mekânsal, toplumsal ve duygusal boyutlarını inceleyerek, görünmez güvenlik pratiklerini toplumsal bir olgu olarak görünür kılar[span_1](end_span).</p>
+    <section id="hero-page" class="page-section active">
+        <header class="hero">
+            <div class="hero-image">
+                <img src="banner.jpeg" alt="Proje Banner" onerror="this.src='banner.jpg'; this.onerror=null; this.parentElement.innerHTML='<div class=\'img-placeholder\'>Görsel Yükleniyor...</div>'">
             </div>
+            <div class="hero-content">
+                <h2>Görünmez Sınırları Birlikte Açığa Çıkar.</h2>
+                <button class="btn-main" onclick="showSection('map-section')">Haritayı Keşfet</button>
+            </div>
+        </header>
+    </section>
 
-            <div class="info-card">
-                <h3 class="card-subtitle">Yöntem ve Yaklaşım</h3>
-                [span_2](start_span)[span_3](start_span)<p>Proje, <b>"Participatory Network Mapping"</b> (Katılımcı Ağ Haritalama) tekniğini kullanır[span_2](end_span)[span_3](end_span). [span_4](start_span)[span_5](start_span)Katılımcıların zihinsel haritalarındaki "gidilebilir" ve "kaçınılması gereken" bölgeleri kolektif bir deneyim ağına dönüştürerek "Korku Coğrafyaları" kavramını İzmir özelinde analiz eder[span_4](end_span)[span_5](end_span).</p>
+    <section id="about-section" class="page-section">
+        <div class="container">
+            <h2 class="section-title">HAKKIMIZDA</h2>
+            <div class="about-intro">
+                <p class="highlight-text">İzmir’de Kadınların ve LGBTİ+ Bireylerin Fiziksel ve Duygusal Güvenlik Deneyimleri Üzerine Nitel Bir Araştırma</p>
             </div>
-        </div>
-
-        <div class="stakeholders-section">
-            <div class="person-card">
-                <h3>Proje Yürütücüsü</h3>
-                <p class="name">Ayça Güngör</p>
-                <p class="title">Yeni Medya ve İletişim 4. Sınıf Öğrencisi</p>
+            <div class="about-grid">
+                <div class="info-card">
+                    <h3>Projenin Amacı</h3>
+                    <p>Bu araştırma, İzmir’de yaşayan kadınların ve LGBTİ+ bireylerin kentte deneyimledikleri fiziksel ve duygusal güvenlik sorunlarını ortaya çıkarmayı hedeflemektedir. Gündelik yaşamdaki güvensizlik hâllerinin mekânsal, toplumsal ve duygusal boyutlarını inceleyerek, görünmez güvenlik pratiklerini toplumsal bir olgu olarak görünür kılar.</p>
+                </div>
+                <div class="info-card">
+                    <h3>Yöntem ve Yaklaşım</h3>
+                    <p>Proje, <b>"Participatory Network Mapping"</b> (Katılımcı Ağ Haritalama) tekniğini kullanır. Katılımcıların zihinsel haritalarındaki "gidilebilir" ve "kaçınılması gereken" bölgeleri kolektif bir deneyim ağına dönüştürerek "Korku Coğrafyaları" kavramını İzmir özelinde analiz eder.</p>
+                </div>
             </div>
-            
-            <div class="partners-card">
-                <h3>İş Birliği ve Paydaşlar</h3>
-                <div class="partner-logos">
-                    <div class="p-logo">İzmir Kent Konseyi</div>
-                    <div class="p-logo">Kadın Meclisi</div>
+            <div class="stakeholders-section">
+                <div class="person-card">
+                    <h3>Proje Yürütücüsü</h3>
+                    <p class="name">Ayça Güngör</p>
+                    <p class="title">Yeni Medya ve İletişim 4. Sınıf Öğrencisi</p>
+                </div>
+                <div class="partners-card">
+                    <h3>İş Birliği ve Paydaşlar</h3>
+                    <p>İzmir Kent Konseyi</p>
+                    <p>İzmir Kent Konseyi Kadın Meclisi</p>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="contact-footer">
-            <h3>İletişim</h3>
-            <div class="contact-grid">
-                <div class="c-item">✉️ ayca.gungor@yasar.edu.tr</div>
-                <div class="c-item">📍 Yaşar Üniversitesi, İzmir</div>
-                <div class="c-item">📸 @kentinsinirlari</div>
-            </div>
-        </div>
-    </div>
-</section>
+    <section id="map-section" class="page-section">
+        <div id="map" style="height: 500px; border-radius: 30px;"></div>
+    </section>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
