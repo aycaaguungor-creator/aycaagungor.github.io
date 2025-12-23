@@ -1,110 +1,46 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kentin Görünmez Sınırları</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css"/>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+<section id="about-section" class="page-section">
+    <div class="about-container">
+        <h2 class="section-title">HAKKIMIZDA</h2>
+        
+        <div class="about-intro">
+            <p class="highlight-text">İzmir’de Kadınların ve LGBTİ+ Bireylerin Fiziksel ve Duygusal Güvenlik Deneyimleri Üzerine Nitel Bir Araştırma</p>
+        </div>
 
-    <nav class="navbar">
-        <div class="nav-container">
-            <h1 class="logo" onclick="showSection('hero-page')">KENTİN GÖRÜNMEZ SINIRLARI</h1>
-            <div class="nav-links">
-                <span onclick="showSection('map-section')">Harita</span>
-                <span onclick="showSection('content-section')">İçerikler</span>
-                <span onclick="showSection('about-section')">Hakkımızda</span>
+        <div class="about-grid">
+            <div class="info-card">
+                <h3 class="card-subtitle">Projenin Amacı</h3>
+                [span_0](start_span)<p>Bu araştırma, İzmir’de yaşayan kadınların ve LGBTİ+ bireylerin kentte deneyimledikleri fiziksel ve duygusal güvenlik sorunlarını ortaya çıkarmayı hedeflemektedir[span_0](end_span). [span_1](start_span)Gündelik yaşamdaki güvensizlik hâllerinin mekânsal, toplumsal ve duygusal boyutlarını inceleyerek, görünmez güvenlik pratiklerini toplumsal bir olgu olarak görünür kılar[span_1](end_span).</p>
             </div>
-            <div class="search-bar">
-                <input type="text" placeholder="Ara...">
-                <button>🔍</button>
+
+            <div class="info-card">
+                <h3 class="card-subtitle">Yöntem ve Yaklaşım</h3>
+                [span_2](start_span)[span_3](start_span)<p>Proje, <b>"Participatory Network Mapping"</b> (Katılımcı Ağ Haritalama) tekniğini kullanır[span_2](end_span)[span_3](end_span). [span_4](start_span)[span_5](start_span)Katılımcıların zihinsel haritalarındaki "gidilebilir" ve "kaçınılması gereken" bölgeleri kolektif bir deneyim ağına dönüştürerek "Korku Coğrafyaları" kavramını İzmir özelinde analiz eder[span_4](end_span)[span_5](end_span).</p>
             </div>
         </div>
-    </nav>
 
-    <section id="hero-page" class="page-section active">
-        <header class="hero">
-            <div class="hero-image">
-                <img src="hero.png" alt="She Rises Illustration" onerror="this.src='https://via.placeholder.com/800x400?text=Gorseli+Klasore+Yukleyin'">
+        <div class="stakeholders-section">
+            <div class="person-card">
+                <h3>Proje Yürütücüsü</h3>
+                <p class="name">Ayça Güngör</p>
+                <p class="title">Yeni Medya ve İletişim 4. Sınıf Öğrencisi</p>
             </div>
-            <div class="hero-text">
-                <h2>Deneyimini paylaş, şehrin sınırlarını yeniden çiz.</h2>
-                <div class="hero-action">
-                    <button class="btn-map-open" onclick="showSection('map-section')">📍 Haritayı Aç</button>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                </div>
-            </div>
-        </header>
-    </section>
-
-    <section id="map-section" class="page-section">
-        <div class="map-layout">
-            <div id="map"></div>
-            <div class="map-sidebar">
-                <h3>Harita Nasıl Kullanılır?</h3>
-                <div class="filter-group">
-                    <button onclick="filterMarkers('guvenli')" class="f-btn g-blue">● Güvenli</button>
-                    <button onclick="filterMarkers('riskli')" class="f-btn g-orange">● Riskli</button>
-                    <button onclick="filterMarkers('guvensiz')" class="f-btn g-red">● Güvensiz</button>
-                </div>
-                <div id="form-container" class="hidden">
-                    <h4>Yeni Deneyim Ekle</h4>
-                    <textarea id="description" placeholder="Bu alan hakkında ne hissediyorsun?"></textarea>
-                    <button class="save-btn" onclick="saveData()">Kaydet</button>
+            
+            <div class="partners-card">
+                <h3>İş Birliği ve Paydaşlar</h3>
+                <div class="partner-logos">
+                    <div class="p-logo">İzmir Kent Konseyi</div>
+                    <div class="p-logo">Kadın Meclisi</div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <section id="content-section" class="page-section">
-        <div class="content-container">
-            <h2>İÇERİKLERİMİZ</h2>
-            <h3>YouTube İçerikleri</h3>
-            <div class="video-placeholder">
-                <iframe width="100%" height="315" src="https://www.youtube.com/embed/tbnv9S-XKoY" frameborder="0" allowfullscreen></iframe>
-            </div>
-            <h3>Instagram İçeriklerimiz</h3>
-            <div class="insta-grid">
-                <div class="insta-card">Lorem Ipsum</div>
-                <div class="insta-card">Lorem Ipsum</div>
+        <div class="contact-footer">
+            <h3>İletişim</h3>
+            <div class="contact-grid">
+                <div class="c-item">✉️ ayca.gungor@yasar.edu.tr</div>
+                <div class="c-item">📍 Yaşar Üniversitesi, İzmir</div>
+                <div class="c-item">📸 @kentinsinirlari</div>
             </div>
         </div>
-    </section>
-
-    <section id="about-section" class="page-section">
-        <div class="about-container">
-            <h2>HAKKIMIZDA</h2>
-            <div class="about-grid">
-                <div>
-                    <h3>Projenin Amacı</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-                </div>
-                <div class="partners">
-                    <h3>Paydaşlarımız</h3>
-                    <div class="partner-icons">
-                        <div class="p-icon">Logo</div>
-                        <div class="p-icon">Logo</div>
-                    </div>
-                </div>
-            </div>
-            <hr>
-            <div class="contact-footer">
-                <h3>Bizimle İletişime Geçin</h3>
-                <div class="contact-grid">
-                    <span>📞 05xx xxx xx xx</span>
-                    <span>📸 @instagramhesabi</span>
-                    <span>✉️ eposta@adresiniz.com</span>
-                    <span>🎥 YouTube Kanalı</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
-    <script src="script.js"></script>
-</body>
-</html>
+    </div>
+</section>

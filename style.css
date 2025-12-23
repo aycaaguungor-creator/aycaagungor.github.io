@@ -1,253 +1,86 @@
-/* 1. DEĞİŞKENLER VE GENEL AYARLAR */
-:root {
-    --primary-purple: #7B61FF;    /* Tasarımdaki ana mor */
-    --dark-purple: #4A3AFF;       /* Başlıklar için koyu mor */
-    --light-bg: #F5F5F7;          /* Sayfa arka planı */
-    --white: #FFFFFF;
-    --text-dark: #333333;
-    --accent-blue: #A5D7D2;       /* Butonlardaki açık turkuaz/mavi */
-    --soft-purple: #EBE7FF;       /* Kart arka planları */
-}
-
-* {
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-}
-
+/* Yazı Tipi İyileştirmesi */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: var(--white);
-    color: var(--text-dark);
-    line-height: 1.6;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: #2D3436;
 }
 
-/* 2. NAVİGASYON (Navbar) */
-.navbar {
-    background-color: var(--primary-purple);
-    padding: 15px 5%;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+/* Sayfa Başlığı */
+.section-title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #4834D4; /* Daha canlı bir mor */
+    text-align: center;
+    margin-bottom: 50px;
+    letter-spacing: -1px;
 }
 
-.nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.logo {
-    color: var(--white);
-    font-size: 1.2rem;
-    font-weight: bold;
-    cursor: pointer;
-    margin: 0;
-}
-
-.nav-links {
-    display: flex;
-    gap: 20px;
-}
-
-.nav-links span {
-    color: var(--white);
-    cursor: pointer;
+/* Vurgulu Metin */
+.highlight-text {
+    font-size: 1.5rem;
+    text-align: center;
+    color: #686DE0;
+    max-width: 800px;
+    margin: 0 auto 40px;
     font-weight: 500;
-    transition: opacity 0.3s;
+    line-height: 1.4;
 }
 
-.nav-links span:hover {
-    opacity: 0.7;
+/* Bilgi Kartları (Profesyonel Gölge ve Hover) */
+.info-card {
+    background: #FFFFFF;
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(72, 52, 212, 0.08);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(72, 52, 212, 0.05);
 }
 
-.search-bar {
-    display: flex;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 20px;
-    padding: 5px 15px;
+.info-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(72, 52, 212, 0.15);
 }
 
-.search-bar input {
-    border: none;
-    background: transparent;
-    color: white;
-    outline: none;
-}
-
-.search-bar input::placeholder {
-    color: rgba(255, 255, 255, 0.7);
-}
-
-/* 3. SAYFA YÖNETİMİ (Gösterme/Gizleme) */
-.page-section {
-    display: none; /* Varsayılan olarak tüm sayfalar gizli */
-    padding: 40px 5%;
-    animation: fadeIn 0.5s ease;
-}
-
-.page-section.active {
-    display: block; /* Sadece 'active' class'ı olan görünür */
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* 4. ANA SAYFA (Hero) */
-.hero {
-    text-align: center;
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.hero-image img {
-    width: 100%;
-    border-radius: 25px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    margin-bottom: 30px;
-}
-
-.hero-text h2 {
-    font-size: 2rem;
-    color: var(--dark-purple);
-    margin-bottom: 25px;
-}
-
-.btn-map-open {
-    background-color: var(--accent-blue);
-    color: #1a4d48;
-    border: none;
-    padding: 15px 40px;
-    border-radius: 30px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: transform 0.2s;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-
-.btn-map-open:hover {
-    transform: scale(1.05);
-}
-
-/* 5. HARİTA SAYFASI */
-.map-layout {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    height: auto;
-}
-
-#map {
-    height: 450px;
-    border-radius: 20px;
-    border: 3px solid var(--soft-purple);
-    z-index: 1;
-}
-
-.map-sidebar {
-    background-color: var(--light-bg);
-    padding: 25px;
-    border-radius: 20px;
-}
-
-.filter-group .f-btn {
-    display: block;
-    width: 100%;
-    margin-bottom: 10px;
-    padding: 12px;
-    border-radius: 25px;
-    border: 1px solid #ddd;
-    text-align: left;
-    background: white;
-    cursor: pointer;
-}
-
-/* 6. İÇERİKLER (YouTube & Instagram) */
-.content-container {
-    max-width: 1000px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.video-placeholder {
-    background: #000;
-    border-radius: 20px;
-    overflow: hidden;
-    margin-bottom: 40px;
-}
-
-.insta-grid {
+/* Yürütücü Kartı */
+.stakeholders-section {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: 1fr 1fr;
     gap: 30px;
+    margin-top: 60px;
 }
 
-.insta-card {
-    background-color: var(--primary-purple);
-    aspect-ratio: 4/5;
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.person-card {
+    background: linear-gradient(135deg, #4834D4, #686DE0);
     color: white;
-    padding: 20px;
-}
-
-/* 7. HAKKIMIZDA & İLETİŞİM */
-.about-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 40px;
-    margin-top: 30px;
-}
-
-.partner-icons {
-    display: flex;
-    gap: 20px;
-}
-
-.p-icon {
-    width: 80px;
-    height: 80px;
-    background: var(--soft-purple);
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.contact-footer {
-    margin-top: 50px;
-    background: linear-gradient(to right, #ffffff, var(--soft-purple));
     padding: 30px;
-    border-radius: 25px;
+    border-radius: 24px;
+    text-align: center;
 }
 
-.contact-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    font-weight: 500;
+.person-card .name { font-size: 1.8rem; font-weight: bold; margin: 10px 0 5px; }
+
+/* Paydaş Logoları Alanı */
+.partner-logos {
+    display: flex;
+    justify-content: space-around;
+    gap: 15px;
+    margin-top: 20px;
 }
 
-/* 8. MOBİL UYUMLULUK (Responsive) */
-@media (min-width: 768px) {
-    .map-layout {
-        flex-direction: row;
-        height: 600px;
-    }
-    #map {
-        flex: 2;
-        height: 100%;
-    }
-    .map-sidebar {
-        flex: 1;
-    }
+.p-logo {
+    background: #F0EDFF;
+    padding: 15px 25px;
+    border-radius: 12px;
+    color: #4834D4;
+    font-weight: bold;
+    font-size: 0.9rem;
+    border: 2px dashed #686DE0;
+}
+
+/* İletişim Altlığı */
+.contact-footer {
+    background: #1E1E1E;
+    color: #FFFFFF;
+    padding: 40px;
+    border-radius: 24px;
+    margin-top: 80px;
 }
