@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kentin Görünmez Sınırları | Ayça Güngör</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1 class="logo">KENTİN GÖRÜNMEZ SINIRLARI</h1>
+            <div class="nav-links">
+                <a href="#about-section">Hakkımızda</a>
+                <a href="#content-section">İçeriklerimiz</a>
+                <a href="#map-section">Harita</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-card">
+            <img src="banner.jpeg" alt="Banner" onerror="this.src='banner.jpg';">
+            <div class="hero-overlay">
+                <div class="hero-text-box">
+                    <span class="badge">Akademik Araştırma Projesi</span>
+                    <h2>Görünmez Sınırları Birlikte Açığa Çıkar.</h2>
+                    <p>İzmir'de toplumsal cinsiyet odağında kentsel güvenlik deneyimleri.</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+ <section id="about-section" class="section white-bg">
+    <div class="container">
+        <h2 class="section-title">BİZ KİMİZ?</h2>
+        <div class="main-description">
+            <p>Merhaba! Ben <strong>Ayça Güngör</strong>. Bu yolculuğa, İzmir’in sokaklarında yürürken hissettiğimiz o bazen huzurlu bazen de tedirgin edici duyguların peşine düşerek çıktım. Kentin sadece binalardan ibaret olmadığını; her köşesinin, her parkının kadınlar ve LGBTİ+ bireyler için farklı hikayeler ve "görünmez sınırlar" barındırdığını biliyorum.</p>
+            <p>Bu proje, sadece akademik bir çalışma değil; İzmir’in her mahallesinde güvenle, özgürce ve korkusuzca var olabilmemiz için yükseltilen bir ses. <strong>"Kentin Görünmez Sınırları"</strong> ile sizin deneyimlerinizi bir araya getirerek, korku coğrafyalarını umut ve dayanışma haritalarına dönüştürmeyi hayal ediyoruz. Gelin, İzmir'in sınırlarını hep birlikte, yeniden çizelim.</p>
+        </div>
+        
+        <div class="stakeholders">
+            <div class="stakeholder-card">
+                <div class="partner-logo-box">
+                    <img src="konsey-logo.png" alt="İzmir Kent Konseyi" class="partner-img">
+                </div>
+                <h3>İzmir Kent Konseyi</h3>
+                <p>Kentin ortak aklıyla, dayanışma içinde yanımızdalar.</p>
+            </div>
+            
+            <div class="stakeholder-card">
+                <div class="partner-logo-box">
+                    <img src="meclis-logo.png" alt="İzmir Kent Konseyi Kadın Meclisi" class="partner-img">
+                </div>
+                <h3>Kadın Meclisi</h3>
+                <p>Güçlü kadınların sesiyle, sahada her adımda birlikteyiz.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <section id="content-section" class="section purple-bg">
+        <div class="container">
+            <h2 class="section-title light">İÇERİKLERİMİZ</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h4>Podcast Serisi</h4>
+                    <p>Katılımcıların sesli anlatıları üzerinden kentsel korku coğrafyalarını dinleyin.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Veri Analizi</h4>
+                    <p>İzmir genelinde toplanan 500+ noktanın tematik ve mekansal haritalandırması.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section id="map-section" class="section white-bg">
+    <div class="container">
+        <h2 class="section-title">DENEYİM HARİTASI</h2>
+        <div class="map-container-box">
+            <div id="map"></div>
+            
+            <div class="map-panel">
+                <h3>Haritalama Deneyimi</h3>
+                <p>İzmir'deki kentsel güvenlik algınızı paylaşıp "Görünmez Sınırları" görünür kılın.</p>
+                
+                <div class="map-buttons">
+                    <button class="btn-map safe" onclick="setCategory('Güvenli')">🟢 Güvenli</button>
+                    <button class="btn-map neutral" onclick="setCategory('Orta Güvenli')">🟡 Orta Güvenli</button>
+                    <button class="btn-map danger" onclick="setCategory('Güvensiz')">🔴 Güvensiz</button>
+                </div>
+
+                <div class="note-area">
+                    <label for="user-note">Deneyim Notunuz (Neden böyle hissettiniz?):</label>
+                    <textarea id="user-note" placeholder="Buradaki hissinizi veya mekânsal deneyiminizi kısaca not edin..."></textarea>
+                </div>
+
+                <p id="status-text">Lütfen bir kategori seçin ve haritaya dokunun.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <footer class="footer">
+        <section id="contact-section" class="section purple-bg">
+    <div class="container">
+        <h2 class="section-title light">İLETİŞİM</h2>
+        <div class="contact-card">
+            <p>Araştırma süreci, veri paylaşımı veya iş birliği talepleriniz için bana ulaşabilirsiniz.</p>
+            <a href="mailto:aycaa.guungor@gmail.com" class="email-link">aycaa.guungor@gmail.com</a>
+        </div>
+    </div>
+</section>
+        <p>© 2025 Kentin Görünmez Sınırları | Ayça Güngör & İzmir Kent Konseyi</p>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
