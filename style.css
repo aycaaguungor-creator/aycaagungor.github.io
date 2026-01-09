@@ -219,7 +219,7 @@ textarea { width: 100%; height: 100px; padding: 15px; border: 2px solid #F1F5F9;
 }
 
 .partner-images img:hover { filter: grayscale(0); opacity: 1; }
-.partner-images img:first-child { height: 248px; } /* konsey-logo */
+.partner-images img:first-child { height: 350px; } /* konsey-logo */
 .partner-images img:last-child  { height: 230px; } /* meclis-logo */
 
 
@@ -233,3 +233,4 @@ textarea { width: 100%; height: 100px; padding: 15px; border: 2px solid #F1F5F9;
     .hero-text-box h1 { font-size: 2.5rem; }
     .map-layout, .atölye-grid { grid-template-columns: 1fr; }
 }
+
