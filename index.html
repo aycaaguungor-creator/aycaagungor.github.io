@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kentin Görünmez Sınırları | Ayça Güngör</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <img src="logo.png" alt="Main Logo">
+            <h1 class="logo">KENTİN GÖRÜNMEZ SINIRLARI</h1>
+            <div class="nav-links">
+                <a href="#map-section">Harita</a>
+                <a href="#atölye">Atölye</a>
+                <a href="#about-section">Proje Hakkında</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <div class="hero-image-container">
+                <img src="banner.jpeg" alt="Banner" onerror="this.src='banner.png.jfif';">
+                <div class="hero-overlay"></div>
+            </div>
+            <div class="hero-text-box">
+                <h1>Kentin Görünmez Sınırları</h1>
+                <h3>Kentte güvende hissetmek herkes için aynı şey ifade etmiyor.</h3>
+                <p>Bu platform, İzmir’de kadınların ve LGBTİ+ bireylerin kamusal alanda yaşadığı güvensizlik deneyimlerini görünür kılmak için oluşturuldu.</p>
+                <p class="sub-text">Yaşananlar tekil değil; mekânsal, tekrar eden ve paylaşıldıkça anlam kazanan deneyimler.</p>
+            </div>
+        </div>
+    </header>
+
+    <section id="map-section" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Kentte Nerede Güvende Hissediyoruz?</h2>
+                <div class="header-desc">
+                    <p>Bu harita, kentte güvensizlik hissedilen ya da görece daha güvenli bulunan alanların bireysel deneyimler üzerinden işaretlenmesini sağlar.</p>
+                    <p>Burada paylaşılan her işaret, “yalnız değilim” duygusunu güçlendiren kolektif bir anlatının parçasıdır. Haritalama sayesinde, güvensizlik hissinin kişisel bir sorun değil, mekânsal ve yapısal bir mesele olduğu görünür hâle gelir.</p>
+                </div>
+                <div class="vurgu-box">
+                    <p>Bu çalışma, İzmir Kent Konseyi ile kurulan iş birliği sayesinde yalnızca görünürlük üretmeyi değil, aynı zamanda yerel yönetimler üzerinde dönüşüm talebi oluşturmayı hedefler. Toplanan veriler; kamusal alan tasarımı, aydınlatma, ulaşım ve güvenlik politikaları üzerine somut aksiyonların tartışılmasına zemin hazırlar.</p>
+                </div>
+            </div>
+
+            <div class="map-layout">
+                <div id="map"></div>
+                <div class="map-ui">
+                    <div class="ui-card">
+                        <h4>Fiziksel Dünyada Yaptığını Burada Deneyimle</h4>
+                        <p>Gündelik hayatta yaptığın şeyi burada da yapıyorsun: Bazı sokaklardan kaçınmak, bazı alanlarda tetikte olmak, rotanı değiştirmek.</p>
+                        <p>Bu platformda, yaşadığın deneyimi işaretleyerek onu görünür kılıyor ve başkalarının da benzer hisleri yaşadığını görüyorsun.</p>
+                        
+                        <div class="category-group">
+                            <button class="btn-cat safe" onclick="setCategory('Güvenli')">🟢 Güvenli</button>
+                            <button class="btn-cat neutral" onclick="setCategory('Orta Güvenli')">🟡 Orta Güvenli</button>
+                            <button class="btn-cat danger" onclick="setCategory('Güvensiz')">🔴 Güvensiz</button>
+                        </div>
+
+                        <div class="input-wrapper">
+                            <label>Deneyim Notunuz</label>
+                            <textarea id="user-note" placeholder="Deneyiminizi buraya not edin..."></textarea>
+                        </div>
+                        <p id="status-text">Kategori seçin ve haritaya dokunun.</p>
+                        
+                        <div class="mini-footer">
+                            Harita, hem bireysel farkındalık hem de kolektif güçlenme için bir araç. Bu alan, yalnızca dijital bir deneyim değil; fiziksel dünyada yaşananların dijital karşılığıdır.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="atölye" class="section dark-section">
+        <div class="container">
+            <div class="atölye-grid">
+                <div class="atölye-text">
+                    <h2>Bu Haritayı Birlikte Oluşturalım</h2>
+                    <p>Haritalama süreci yalnızca bu web sitesiyle sınırlı değil. Odak grup atölyelerinde, bir araya gelerek kentte yaşanan güvensizlik deneyimlerini birlikte haritalıyoruz, konuşuyoruz ve anlamlandırıyoruz. Atölyelerde yapılan fiziksel haritalama çalışmaları, buradaki dijital haritayla birleşerek daha güçlü bir anlatı oluşturuyor.</p>
+                    <p>Yeni medya teknolojilerini kullanarak, fiziksel dünyada yaşanan bir problemi birlikte görünür kılıyoruz.</p>
+                </div>
+                <div class="atölye-card">
+                    <div class="empowerment-text">
+                        <p>Bu süreç bir veri toplama değil, bir empowerment sürecidir. Tedirginlik, güvensizlik ve umutsuzluk duygularını paylaşan bireyleri bir araya getirerek, bu deneyimleri politik ve kolektif bir zemine taşımayı amaçlar. Burada işaretlediğin noktalar bir son değil.</p>
+                        <p class="cta-line">Gel, bunu hep beraber konuşalım.</p>
+                    </div>
+                    <button class="btn-main">Odak grup atölyemize katıl.</button>
+                    <p class="btn-sub">Kenti birlikte yeniden düşünelim.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about-section" class="section">
+        <div class="container">
+            <div class="about-wrapper">
+                <div class="about-info">
+                    <h2>Bu Proje Neden Var?</h2>
+                    <p>Kentin Görünmez Sınırları, kentte güvende hissetmeyen insanların deneyimlerinden yola çıkarak ortaya çıkan bir projedir. Bu deneyimler çoğu zaman bireysel bir korku gibi algılansa da, aslında kamusal alanın nasıl tasarlandığıyla doğrudan ilişkilidir. Kent, herkes için aynı şekilde deneyimlenmez.</p>
+                </div>
+                <div class="personal-story">
+                    <p>Biz güvende hissetmeyen, tetikte yürüyen, bazı sokaklardan kaçınan insanlarız. Ben de bu insanlardan biriyim. Bir kadın olarak, kentin bazı bölgelerinde var olmanın sürekli bir dikkat hâli gerektirdiğini biliyorum. Bu proje, tam da bu hissin normalleştirilmesine karşı çıkmak için var.</p>
+                </div>
+                <div class="partner-box">
+                    <p>İzmir Kent Konseyi ile yürütülen bu çalışma, bireysel deneyimlerin kurumsal bir muhatapla buluşmasını amaçlar. Haritalama sonucunda ortaya çıkan verilerin, yerel yönetimlerin kamusal alan politikalarını yeniden düşünmesine katkı sunması hedeflenmektedir. Amaç, yalnızca anlatmak değil; değişim talep edebilecek bir zemin oluşturmak.</p>
+                </div>
+            </div>
+            <h3 class="partners-title">PARTNERLERİMİZ</h3>
+                <div class="partner-images">
+                    
+                    <img src="konsey-logo.png" alt="Kent Konseyi">
+                    <img src="meclis-logo.png" alt="Kadın Meclisi">
+                </div>
+
+        </div>
+    </section>
+    
+
+    <div class="final-statement">
+        <div class="container">
+            <p>Bu harita tamamlanmış değil. Çünkü kent, onu yaşayanlar sustukça değil, konuştukça değişir.</p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>İletişim: <a href="mailto:aycaa.guungor@gmail.com">aycaa.guungor@gmail.com</a></p>
+        <p>© 2026 Kentin Görünmez Sınırları</p>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
