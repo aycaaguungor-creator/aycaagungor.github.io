@@ -1,143 +1,170 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kentin Görünmez Sınırları | Ayça Güngör</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Kentin Görünmez Sınırları, İzmir’de kadınların ve LGBTİ+ bireylerin kamusal alandaki güvenlik deneyimlerini görünür kılmayı amaçlayan katılımcı haritalama projesidir." />
+  <title>Kentin Görünmez Sınırları | Ayça Güngör</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <nav class="navbar" aria-label="Ana menü">
+    <div class="nav-container">
+      <a class="brand" href="#top" aria-label="Ana sayfaya dön">
+        <img src="logo.png" alt="Kentin Görünmez Sınırları logosu" />
+        <span>KENTİN GÖRÜNMEZ SINIRLARI</span>
+      </a>
+      <button class="menu-toggle" aria-label="Menüyü aç/kapat" aria-expanded="false">☰</button>
+      <div class="nav-links">
+        <a href="#map-section">Harita</a>
+        <a href="#atolye">Atölye</a>
+        <a href="#blog-section">Blog</a>
+        <a href="#about-section">Proje Hakkında</a>
+      </div>
+    </div>
+  </nav>
 
-    <nav class="navbar">
-        <div class="nav-container">
-            <img src="logo.png" alt="Main Logo">
-            <h1 class="logo">KENTİN GÖRÜNMEZ SINIRLARI</h1>
-            <div class="nav-links">
-                <a href="#map-section">Harita</a>
-                <a href="#atölye">Atölye</a>
-                <a href="#about-section">Proje Hakkında</a>
-            </div>
-        </div>
-    </nav>
+  <header id="top" class="hero">
+    <img class="hero-bg" src="banner.jpeg" alt="İzmir kent manzarası" />
+    <div class="hero-overlay"></div>
+    <div class="hero-content container reveal">
+      <p class="eyebrow">Katılımcı haritalama projesi</p>
+      <h1>Kentin Görünmez Sınırları</h1>
+      <p class="hero-lead">İzmir’de güvenli ve güvensiz hissedilen alanları, kişisel deneyimlerden kolektif bir hafızaya dönüştüren dijital bir harita.</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="#map-section">Deneyimini işaretle</a>
+        <a class="btn secondary" href="#blog-section">Blogları oku</a>
+      </div>
+    </div>
+  </header>
 
-    <header class="hero">
-        <div class="hero-content">
-            <div class="hero-image-container">
-                <img src="banner.jpeg" alt="Banner" onerror="this.src='banner.png.jfif';">
-                <div class="hero-overlay"></div>
-            </div>
-            <div class="hero-text-box">
-                <h1>Kentin Görünmez Sınırları</h1>
-                <h3>Kentte güvende hissetmek herkes için aynı şey ifade etmiyor.</h3>
-                <p>Bu platform, İzmir’de kadınların ve LGBTİ+ bireylerin kamusal alanda yaşadığı güvensizlik deneyimlerini görünür kılmak için oluşturuldu.</p>
-                <p class="sub-text">Yaşananlar tekil değil; mekânsal, tekrar eden ve paylaşıldıkça anlam kazanan deneyimler.</p>
-            </div>
-        </div>
-    </header>
-
+  <main>
     <section id="map-section" class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Kentte Nerede Güvende Hissediyoruz?</h2>
-                <div class="header-desc">
-                    <p>Bu harita, kentte güvensizlik hissedilen ya da görece daha güvenli bulunan alanların bireysel deneyimler üzerinden işaretlenmesini sağlar.</p>
-                    <p>Burada paylaşılan her işaret, “yalnız değilim” duygusunu güçlendiren kolektif bir anlatının parçasıdır. Haritalama sayesinde, güvensizlik hissinin kişisel bir sorun değil, mekânsal ve yapısal bir mesele olduğu görünür hâle gelir.</p>
-                </div>
-                <div class="vurgu-box">
-                    <p>Bu çalışma, İzmir Kent Konseyi ile kurulan iş birliği sayesinde yalnızca görünürlük üretmeyi değil, aynı zamanda yerel yönetimler üzerinde dönüşüm talebi oluşturmayı hedefler. Toplanan veriler; kamusal alan tasarımı, aydınlatma, ulaşım ve güvenlik politikaları üzerine somut aksiyonların tartışılmasına zemin hazırlar.</p>
-                </div>
-            </div>
-
-            <div class="map-layout">
-                <div id="map"></div>
-                <div class="map-ui">
-                    <div class="ui-card">
-                        <h4>Fiziksel Dünyada Yaptığını Burada Deneyimle</h4>
-                        <p>Gündelik hayatta yaptığın şeyi burada da yapıyorsun: Bazı sokaklardan kaçınmak, bazı alanlarda tetikte olmak, rotanı değiştirmek.</p>
-                        <p>Bu platformda, yaşadığın deneyimi işaretleyerek onu görünür kılıyor ve başkalarının da benzer hisleri yaşadığını görüyorsun.</p>
-                        
-                        <div class="category-group">
-                            <button class="btn-cat safe" onclick="setCategory('Güvenli')">🟢 Güvenli</button>
-                            <button class="btn-cat neutral" onclick="setCategory('Orta Güvenli')">🟡 Orta Güvenli</button>
-                            <button class="btn-cat danger" onclick="setCategory('Güvensiz')">🔴 Güvensiz</button>
-                        </div>
-
-                        <div class="input-wrapper">
-                            <label>Deneyim Notunuz</label>
-                            <textarea id="user-note" placeholder="Deneyiminizi buraya not edin..."></textarea>
-                        </div>
-                        <p id="status-text">Kategori seçin ve haritaya dokunun.</p>
-                        
-                        <div class="mini-footer">
-                            Harita, hem bireysel farkındalık hem de kolektif güçlenme için bir araç. Bu alan, yalnızca dijital bir deneyim değil; fiziksel dünyada yaşananların dijital karşılığıdır.
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <div class="container">
+        <div class="section-intro reveal">
+          <p class="eyebrow">Deneyim haritası</p>
+          <h2>Kentte nerede güvende hissediyoruz?</h2>
+          <p>Bu harita, İzmir’de güvenli, orta güvenli ya da güvensiz hissedilen alanların deneyimlerle birlikte işaretlenmesini sağlar. Paylaşılan her nokta, tekil görünen deneyimlerin aslında mekânsal ve ortak bir örüntü oluşturabileceğini gösterir.</p>
         </div>
+
+        <div class="map-shell reveal">
+          <div class="map-card">
+            <div id="map" aria-label="İzmir deneyim haritası"></div>
+          </div>
+
+          <aside class="map-panel" aria-label="Haritaya deneyim ekleme paneli">
+            <div class="panel-head">
+              <span class="pill">Anonim katkı</span>
+              <h3>Deneyimini haritaya ekle</h3>
+              <p>Önce bir kategori seç, notunu yaz ve haritada deneyimin geçtiği noktaya tıkla.</p>
+            </div>
+
+            <div class="category-group" role="group" aria-label="Güvenlik kategorisi seçimi">
+              <button class="btn-cat safe" data-category="Güvenli"><span></span>Güvenli</button>
+              <button class="btn-cat neutral" data-category="Orta Güvenli"><span></span>Orta güvenli</button>
+              <button class="btn-cat danger" data-category="Güvensiz"><span></span>Güvensiz</button>
+            </div>
+
+            <label class="input-label" for="user-note">Deneyim notu</label>
+            <textarea id="user-note" maxlength="260" placeholder="Örn. Bu sokakta akşam saatlerinde yürürken tedirgin hissettim..."></textarea>
+            <p id="status-text" class="status-text">Kategori seçin ve haritaya dokunun.</p>
+            <button id="clear-experiences" class="text-button" type="button">Bu cihazdaki deneyimleri temizle</button>
+          </aside>
+        </div>
+
+        <div class="experiences-block reveal">
+          <div class="block-title-row">
+            <div>
+              <p class="eyebrow">Akış</p>
+              <h3>Anonim deneyimler</h3>
+            </div>
+            <p class="muted">Bu bölüm şimdilik yalnızca bu tarayıcıda kaydedilir.</p>
+          </div>
+          <div id="experience-list" class="experience-list"></div>
+        </div>
+      </div>
     </section>
 
-    <section id="atölye" class="section dark-section">
-        <div class="container">
-            <div class="atölye-grid">
-                <div class="atölye-text">
-                    <h2>Bu Haritayı Birlikte Oluşturalım</h2>
-                    <p>Haritalama süreci yalnızca bu web sitesiyle sınırlı değil. Odak grup atölyelerinde, bir araya gelerek kentte yaşanan güvensizlik deneyimlerini birlikte haritalıyoruz, konuşuyoruz ve anlamlandırıyoruz. Atölyelerde yapılan fiziksel haritalama çalışmaları, buradaki dijital haritayla birleşerek daha güçlü bir anlatı oluşturuyor.</p>
-                    <p>Yeni medya teknolojilerini kullanarak, fiziksel dünyada yaşanan bir problemi birlikte görünür kılıyoruz.</p>
-                </div>
-                <div class="atölye-card">
-                    <div class="empowerment-text">
-                        <p>Bu süreç bir veri toplama değil, bir empowerment sürecidir. Tedirginlik, güvensizlik ve umutsuzluk duygularını paylaşan bireyleri bir araya getirerek, bu deneyimleri politik ve kolektif bir zemine taşımayı amaçlar. Burada işaretlediğin noktalar bir son değil.</p>
-                        <p class="cta-line">Gel, bunu hep beraber konuşalım.</p>
-                    </div>
-                    <button class="btn-main">Odak grup atölyemize katıl.</button>
-                    <p class="btn-sub">Kenti birlikte yeniden düşünelim.</p>
-                </div>
-            </div>
+    <section id="atolye" class="section dark-section">
+      <div class="container atolye-grid reveal">
+        <div>
+          <p class="eyebrow light">Atölye yaklaşımı</p>
+          <h2>Bu haritayı birlikte oluşturuyoruz.</h2>
+          <p>Haritalama süreci yalnızca dijital bir arayüzden ibaret değil. Odak grup atölyelerinde katılımcılar, kentte yaşadıkları güvenlik deneyimlerini birlikte konuşuyor, fiziksel haritalar üzerinde işaretliyor ve bu deneyimleri ortak bir anlatıya dönüştürüyor.</p>
         </div>
+        <div class="dark-card">
+          <h3>Deneyimden görünürlüğe</h3>
+          <p>Bu süreç bir veri toplama çalışmasından çok, birlikte düşünme ve güçlenme alanı olarak tasarlandı. Amaç; güvensizlik hissini kişisel bir sorun gibi bırakmak değil, kamusal alanın nasıl daha kapsayıcı kurulabileceğini tartışmaya açmak.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="blog-section" class="section blog-section">
+      <div class="container">
+        <div class="section-intro reveal">
+          <p class="eyebrow">Blog</p>
+          <h2>Projeden yazılar</h2>
+          <p>Odak grup atölyesinden çıkan deneyimleri, kentte güvenlik algısını ve gündelik hareket stratejilerini ele alan yazılar.</p>
+        </div>
+        <div id="blog-list" class="blog-grid reveal"></div>
+      </div>
+    </section>
+
+    <section id="social-section" class="section social-section">
+      <div class="container social-card reveal">
+        <div>
+          <p class="eyebrow">Sosyal medya</p>
+          <h2>Projeyi takip et</h2>
+          <p>Proje paylaşımlarını, video içerikleri ve güncel duyuruları sosyal medya hesaplarından takip edebilirsiniz.</p>
+        </div>
+        <div class="social-actions">
+          <a class="btn primary" target="_blank" rel="noopener" href="https://www.instagram.com/kentin_gorunmez_sinirlari?igsh=dW4zM2htOXI0aGho">Projeyi Instagram’da keşfet</a>
+          <a class="btn outline" target="_blank" rel="noopener" href="https://www.youtube.com/@kentingörünmezsınırları">Video içerikleri keşfet</a>
+        </div>
+      </div>
     </section>
 
     <section id="about-section" class="section">
-        <div class="container">
-            <div class="about-wrapper">
-                <div class="about-info">
-                    <h2>Bu Proje Neden Var?</h2>
-                    <p>Kentin Görünmez Sınırları, kentte güvende hissetmeyen insanların deneyimlerinden yola çıkarak ortaya çıkan bir projedir. Bu deneyimler çoğu zaman bireysel bir korku gibi algılansa da, aslında kamusal alanın nasıl tasarlandığıyla doğrudan ilişkilidir. Kent, herkes için aynı şekilde deneyimlenmez.</p>
-                </div>
-                <div class="personal-story">
-                    <p>Biz güvende hissetmeyen, tetikte yürüyen, bazı sokaklardan kaçınan insanlarız. Ben de bu insanlardan biriyim. Bir kadın olarak, kentin bazı bölgelerinde var olmanın sürekli bir dikkat hâli gerektirdiğini biliyorum. Bu proje, tam da bu hissin normalleştirilmesine karşı çıkmak için var.</p>
-                </div>
-                <div class="partner-box">
-                    <p>İzmir Kent Konseyi ile yürütülen bu çalışma, bireysel deneyimlerin kurumsal bir muhatapla buluşmasını amaçlar. Haritalama sonucunda ortaya çıkan verilerin, yerel yönetimlerin kamusal alan politikalarını yeniden düşünmesine katkı sunması hedeflenmektedir. Amaç, yalnızca anlatmak değil; değişim talep edebilecek bir zemin oluşturmak.</p>
-                </div>
-            </div>
-            <h3 class="partners-title">PARTNERLERİMİZ</h3>
-                <div class="partner-images">
-                    
-                    <img src="konsey-logo.png" alt="Kent Konseyi">
-                    <img src="meclis-logo-2.png" alt="Kadın Meclisi">
-                </div>
-
+      <div class="container">
+        <div class="about-wrapper reveal">
+          <div class="about-info">
+            <h2>Bu proje neden var?</h2>
+            <p>Kentin Görünmez Sınırları, kentte güvende hissetmeyen insanların deneyimlerinden yola çıkarak ortaya çıkan bir projedir. Bu deneyimler çoğu zaman bireysel bir korku gibi algılansa da, aslında kamusal alanın nasıl tasarlandığıyla doğrudan ilişkilidir.</p>
+          </div>
+          <div class="personal-story">
+            <p>Biz güvende hissetmeyen, tetikte yürüyen, bazı sokaklardan kaçınan insanlarız. Bu proje, bu hissin normalleştirilmesine karşı çıkmak ve deneyimleri görünür kılmak için var.</p>
+          </div>
+          <div class="partner-box">
+            <p>İzmir Kent Konseyi ile yürütülen bu çalışma, bireysel deneyimlerin kurumsal bir muhatapla buluşmasını amaçlar. Amaç, yalnızca anlatmak değil; değişim talep edebilecek bir zemin oluşturmak.</p>
+          </div>
         </div>
+
+        <h3 class="partners-title reveal">PARTNERLERİMİZ</h3>
+        <div class="partner-images reveal">
+          <img src="konsey-logo.png" alt="İzmir Kent Konseyi" />
+          <img src="meclis-logo-2.png" alt="İzmir Kent Konseyi Kadın Meclisi" />
+        </div>
+      </div>
     </section>
-    
 
-    <div class="final-statement">
-        <div class="container">
-            <p>Bu harita tamamlanmış değil. Çünkü kent, onu yaşayanlar sustukça değil, konuştukça değişir.</p>
-        </div>
-    </div>
+    <section class="final-statement">
+      <div class="container reveal">
+        <p>Bu harita tamamlanmış değil. Çünkü kent, onu yaşayanlar sustukça değil, konuştukça değişir.</p>
+      </div>
+    </section>
+  </main>
 
-    <footer class="footer">
-        <p>İletişim: <a href="mailto:aycaa.guungor@gmail.com">aycaa.guungor@gmail.com</a></p>
-        <p>© 2026 Kentin Görünmez Sınırları</p>
-    </footer>
+  <footer class="footer">
+    <p>İletişim: <a href="mailto:aycaa.guungor@gmail.com">aycaa.guungor@gmail.com</a></p>
+    <p>© 2026 Kentin Görünmez Sınırları</p>
+  </footer>
 
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="script.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>window.BLOG_POSTS = [{"title": "Kentin Görünmez Sınırları: Kadınlar Şehri Nasıl Deneyimliyor?", "snippet": "Bir şehir sokağında yürüdüğünüzü düşünün. Sokak aydınlatılmış, insanlar etrafta dolaşıyor ve her şey oldukça normal görünüyor. Ancak aynı sokak herkes için aynı deneyimi sunmayabilir. Özellikle kadınlar için şehirde yürümek çoğu zaman yalnızca bir noktadan...", "content": "Giriş\nBir şehir sokağında yürüdüğünüzü düşünün. Sokak aydınlatılmış, insanlar etrafta dolaşıyor ve her şey oldukça normal görünüyor. Ancak aynı sokak herkes için aynı deneyimi sunmayabilir. Özellikle kadınlar için şehirde yürümek çoğu zaman yalnızca bir noktadan diğerine gitmekten ibaret değildir. Bazen rota değiştirmek, daha aydınlık sokakları tercih etmek veya eve dönüş saatini planlamak gibi küçük ama önemli kararlar bu deneyimin bir parçası haline gelir.\nKentler genellikle herkes için eşit şekilde deneyimlenen kamusal alanlar olarak düşünülür. Ancak toplumsal cinsiyet araştırmaları, kadınların kamusal alanları çoğu zaman farklı şekillerde deneyimlediğini göstermektedir. Güvenlik algısı, geçmiş deneyimler ve sosyal normlar şehirde hareket etme biçimlerini doğrudan etkileyebilir.\nBu yazı, Kentin Görünmez Sınırları projesi kapsamında gerçekleştirilen odak grup çalışmasının bulgularından yola çıkarak kadınların kentteki gündelik güvenlik deneyimlerini ele almaktadır. Yazıda özellikle “görünmez sınırlar” kavramı üzerinden kadınların şehir içinde nasıl hareket ettikleri ve hangi stratejileri geliştirdikleri incelenmektedir.\nKentte Gündelik Hareket Stratejileri\nŞehirde hareket etmek çoğu zaman basit bir eylem gibi görünür. Ancak birçok kadın için bu hareketin arkasında çeşitli düşünme süreçleri ve kararlar bulunur. Özellikle akşam saatlerinde ya da daha az kalabalık alanlarda yürürken bireyler çevrelerini daha dikkatli gözlemleyebilir. Odak grup görüşmesinde katılımcılar, şehirde hareket ederken sürekli bir farkındalık hali içinde olduklarını ifade etmiştir. Katılımcılardan biri bu durumu şu sözlerle anlatmıştır: “Gece olunca nerede olursam olayım gerçekten rahatsız hissettiğim zamanlar oluyor.” Benzer şekilde başka bir katılımcı, özellikle akşam saatlerinde yürürken daha tetikte olduğunu ifade etmiştir: “Akşam saatlerinde gölgemi bile takip eder bir haldeyim.” Bu ifadeler, şehirde güvenlik algısının yalnızca belirli olaylara bağlı olmadığını göstermektedir. Güvenlik duygusu çoğu zaman sürekli bir farkındalık hali ile ilişkilidir. Kadınlar şehir içinde hareket ederken çeşitli stratejiler geliştirebilir. Bunlar bazen çok küçük kararlar gibi görünse de gündelik hayatın önemli bir parçası haline gelir. Örneğin:\nDaha aydınlık sokakları tercih etmek\nKalabalık alanlarda yürümeyi seçmek\nTelefonla konuşarak yürümek\nDaha hızlı yürümek\nBelirli rotalardan kaçınmak\nBu davranışlar bireysel tercihler gibi görünse de çoğu zaman ortak deneyimlerden doğar.\nKentin Görünmez Sınırları\n“Kentin görünmez sınırları” kavramı, haritalarda yer almayan ancak gündelik deneyimler aracılığıyla oluşan mekânsal kısıtları ifade eder. Bu sınırlar fiziksel engeller değildir; daha çok bireylerin deneyimleri ve algıları üzerinden şekillenir. Odak grup görüşmesinde katılımcılar, şehirde güvenlik algısının mekâna göre değişebildiğini sıkça dile getirmiştir. Katılımcılardan biri bu durumu şöyle ifade etmiştir: “Bir sokaktan geçiyorum, burası güvenliyse iki sokak arkası çok güvensiz olabiliyor.” Bu ifade, şehirde güvenlik algısının ne kadar parçalı olabileceğini göstermektedir. Aynı mahallede bile farklı sokaklar farklı duygular yaratabilir. Bir başka katılımcı ise zamanla bazı davranışların alışkanlık haline geldiğini belirtmiştir: “Bu artık öğrenilmiş bir kalıp gibi oluyor.” Bu sözler, görünmez sınırların bireysel deneyimlerle başlayıp zamanla kolektif bir yapıya dönüşebileceğini göstermektedir. İnsanlar belirli mekânları ve zamanları zihinsel olarak “riskli” ya da “güvenli” olarak kodlayabilir.\nGüvenliğin Duygusal Boyutu\nKentte güvenlik çoğu zaman yalnızca fiziksel olaylar üzerinden tartışılır. Ancak güvenliğin önemli bir duygusal boyutu da vardır. Kaygı, tedirginlik ve sürekli tetikte olma hali bireylerin kamusal alan deneyimini doğrudan etkileyebilir. Odak grup görüşmesinde katılımcılar bu duygusal deneyimi açıkça dile getirmiştir. Katılımcılardan biri şöyle söylemiştir: “Belli saatlerden sonra bence her yer tehlikeli olabilir.” Bu ifade, güvenlik algısının bazen belirli mekânlarla sınırlı kalmadığını, daha geniş bir duygusal duruma dönüşebildiğini göstermektedir. Sürekli çevreyi kontrol etme ve tetikte olma hali zamanla zihinsel bir yük oluşturabilir. Bu nedenle şehir yalnızca fiziksel bir mekân değil, aynı zamanda duygusal bir deneyim alanıdır.\nDeneyimlerin Haritalanması Neden Önemli?\nKentin Görünmez Sınırları projesinin temel amaçlarından biri bu deneyimleri görünür hale getirmektir. Bu amaçla proje kapsamında katılımcı haritalama yöntemi kullanılmaktadır. Katılımcılar kendilerini güvende veya güvensiz hissettikleri alanları harita üzerinde işaretleyerek deneyimlerini paylaşmaktadır. Bu yöntem bireysel anlatıların mekânsal bir veri haline gelmesini sağlar. Birden fazla katılımcının deneyimleri bir araya geldiğinde belirli mekânsal örüntüler ortaya çıkabilir. Bu da güvensizlik deneyimlerinin yalnızca bireysel olmadığını, aynı zamanda yapısal bir boyutu olduğunu göstermeye yardımcı olur.\nSonuç\nKentler genellikle herkes için açık ve eşit kamusal alanlar olarak düşünülür. Ancak odak grup görüşmesinde paylaşılan deneyimler, kadınların şehirde hareket ederken çoğu zaman görünmez sınırlarla karşılaştığını göstermektedir. Rota değiştirmek, belirli saatlerde belirli yerlerden kaçınmak veya çevreyi sürekli kontrol etmek gibi davranışlar birçok kadın için gündelik hayatın bir parçasıdır. Bu pratikler şehirdeki görünmez sınırların nasıl oluştuğunu anlamak açısından önemlidir. Bu deneyimleri görünür kılmak, daha kapsayıcı ve güvenli kentler üzerine düşünmenin ilk adımı olabilir.\nCall to Action: Siz de şehirde yürürken rotanızı değiştirdiğiniz ya da kendinizi daha dikkatli hissettiğiniz anlar yaşadınız mı? Deneyimlerinizi paylaşarak bu görünmez sınırları birlikte görünür kılabiliriz.\nReferanslar (APA)\nLefebvre, H. (1996). Writings on cities. Blackwell.\nPain, R. (2001). Gender, race, age and fear in the city. Urban Studies, 38(5–6), 899–913."}, {"title": "Atölyeden Çıkan Sesler: Kadınlar Kentte Güvenliği Nasıl Yaşıyor?", "snippet": "Kentte güvenlik çoğu zaman istatistikler, suç oranları ya da haber başlıkları üzerinden tartışılır. Oysa gündelik hayatta güvenlik deneyimi çok daha farklı şekillerde ortaya çıkar. Bazen bir sokağa girmemek, bazen eve dönüş saatini hesaplamak, bazen de...", "content": "Giriş\nKentte güvenlik çoğu zaman istatistikler, suç oranları ya da haber başlıkları üzerinden tartışılır. Oysa gündelik hayatta güvenlik deneyimi çok daha farklı şekillerde ortaya çıkar. Bazen bir sokağa girmemek, bazen eve dönüş saatini hesaplamak, bazen de yalnız yürürken sürekli arkaya bakmak bu deneyimin bir parçasıdır. Bu davranışlar çoğu zaman görünmezdir; ama birçok kadın ve LGBTİ+ birey için gündelik hayatın olağan bir parçası haline gelmiştir.\nKentin Görünmez Sınırları projesi kapsamında gerçekleştirilen odak grup atölyesi tam da bu görünmeyen deneyimleri konuşmak için tasarlandı. Atölyede katılımcılar, İzmir’de kendilerini güvende ya da güvensiz hissettikleri yerleri, hangi durumlarda daha dikkatli hareket ettiklerini, hangi duyguları yaşadıklarını ve kendilerini korumak için neler yaptıklarını paylaştı. Bu yazı, atölyede ortaya çıkan başlıca temaları ve katılımcıların doğrudan ifadelerini bir araya getiriyor.\nEn rahat hissedilen yerler: kalabalık, görünür ve işlek alanlar\nAtölyede ilk olarak katılımcılara İzmir’de kendilerini en rahat ve güvende hissettikleri yerler soruldu. Verilen cevaplar, güven duygusunun çoğu zaman kalabalık, görünür ve hareketli alanlarla ilişkilendirildiğini gösterdi. Bir katılımcı bunu şöyle anlattı:\n“Ben biraz daha kıyı şeridinde aslında kendimi daha rahat hissediyorum. Çünkü insanların yoğunlukta olduğu bir yer, insanların eğlenmeye geldiği bir yer aslında kalabalık olan bir yer olduğu için kıyı kısmında biraz daha rahat hissediyorum kendimi.”\nBir başka katılımcı da benzer şekilde sahil hattını ve daha hareketli bölgeleri güvenli bulduğunu söyledi: “Ben de aynı şekilde Didem’e katılıyorum. Güzelyalı hattı, Karataş’a kadar olan sahil şeridi, Bostanlı.” Üniversite çevreleri de birkaç katılımcı için daha güvenli olarak tanımlandı. Bunun nedeni yine benzerdi: genç nüfusun yoğunluğu ve kamusal görünürlük.\n“Bana genç nüfusun yoğunlukta olduğu yerler genelde daha güvende hissettiriyor.”\n“Ben de daha çok üniversite öğrencilerinin olduğu yerlerde güvende hissediyorum. Bornova gibi veya yine farklı farklı üniversitelerin bulunduğu lokasyondaki yerler gibi, genç popülasyonun fazla olduğu yerlerde daha güvende hissediyorum.” Bu bölümde ortaya çıkan ortak fikir şuydu: kadınlar ve LGBTİ+ bireyler için güven duygusu çoğu zaman mekânın fiziksel özelliklerinden çok, oradaki insan yoğunluğu ve görünürlükle bağlantılı.\nGüvensizlik belirli semtlerle sınırlı değil\nKatılımcılara günlük hayatta kendilerini daha temkinli hissettikleri durumlar sorulduğunda ortaya çıkan ilk önemli bulgu şuydu: güvensizlik deneyimi yalnızca “kötü” olarak bilinen birkaç semtle sınırlı değil. Bir katılımcı bunu çok net ifade etti:\n“İzmir’in çok karışık bir yapısı var bence. Genelleyebileceğim bir güvenli yer bence çok net bir şekilde yok.” Aynı katılımcı şöyle devam etti: “Belli saatlerden sonra bence her yer tehlikeli olabilir.”\nBir başka katılımcı da bu duygunun belirli mahallelerden bağımsız olarak sürekli hale gelebildiğini söyledi:\n“Bu, konumdan da ayrı bir şekilde artık oturmuş öğrenilmiş bir kalıp gibi olmaya başladı.” Bu ifade çok önemliydi. Çünkü burada mesele yalnızca “şu semt tehlikeli” demek değil; zamanla öğrenilen bir dikkat hali, bir tetikte olma alışkanlığı. Yine bir katılımcı güvenlik hissinin sokak ölçeğinde bile değişebildiğini şöyle anlattı:\n“Bir sokaktan geçiyorum, burası güvenliyse iki sokak arkası çok güvensiz ve tehlikeli bir yer olabiliyor.” Bu cümle, kentin görünmez sınırlarını belki de en iyi özetleyen ifadelerden biri oldu.\nEn çok tekrar eden deneyim: takip edilmek\nAtölyede en çok tekrar eden deneyimlerden biri takip edilme oldu. Özellikle iş çıkışı, akşam saatleri ve yalnız olunan anlar katılımcılar tarafından daha riskli olarak tarif edildi.\nBir katılımcı bunu detaylı biçimde şöyle anlattı:\n“Ben hep çalıştığım için iş çıkışlarını hep takip ediliyorum. Bu takip edilme kısımları da akşam saat 7’den sonra herhangi bir anda olabiliyor. Hep işten çıktığımda takip ediliyorum. Markete gitmek istediğim zaman takip ediliyorum. Hastaneye gittiğim zaman sürekli peşimde belirli bir yere kadar varmadığım sürece beni takip eden erkekler oluyor.”\nBaşka bir katılımcı da belirli bölgelerde benzer deneyimler yaşadığını söyledi:\n“Özellikle ağırlıklı olarak Buca tarafında çok fazla takip edildim.”\nBir diğer katılımcı ise çalıştığı bölgeler üzerinden yaşadığı durumu şu sözlerle anlattı:\n“Ben işim dolayısıyla Basmane ve Çamdibi’nde çalışıyorum. Basmane metronun o taraflar benim için biraz sıkıntılı bir bölge. Çünkü ben işim dolayısıyla akşam çıkıyorum. Hava karardığı zaman çıkıyorum ve burada çok kez takip edildim. Çok kez yolum kesildi.”\nBu anlatılar, takip edilme deneyiminin tekil bir olay olmadığını; birçok katılımcının farklı bölgelerde benzer biçimde yaşadığı ortak bir örüntü olduğunu gösteriyor.\nTaciz, bakışlar ve erkek grupları\nTakip edilme kadar sık dile getirilen bir başka konu da taciz ve rahatsız edici bakışlardı. Özellikle erkek gruplarının bulunduğu alanlar katılımcılar için daha rahatsız edici olarak tanımlandı. Bir katılımcı şöyle dedi:\n“Yanımda erkek bir arkadaşım olmadığı zaman genellikle takip ediliyorum. Çok fazla kalabalık erkek grupları tarafından taciz ediliyoruz.” Aynı katılımcı görünüş fark etmeksizin rahatsız edildiğini de anlattı: “İnsanların tuhaf bakışlarına maruz kalıyorum.”\n“Kapalı giyindiğim zamanda da yaşlı erkekler ve küçük ergen erkekler tarafından rahatsız ediliyorum.” Bir başka katılımcı ise rahatsızlık yaratan şeyin doğrudan “insan popülasyonu” olduğunu söyledi: “Benim burada genellikle insan popülasyonları rahatsız ediyor.” Ve bunu daha da açtı:\n“Belirli fenotipte insan tipleri var. Bunlar genellikle farklı farklı çok yasal olmayan işlerle uğraşıyorlar. Mafyatik işlerdir olsun, uyuşturucu ticaretidir olsun bu tarz insanlar beni rahatsız ediyor.” Bu tür anlatılar, güvensizliğin yalnızca fiziksel mekânla değil, mekândaki toplumsal ilişkiler ve insan yoğunluğuyla da bağlantılı olduğunu gösteriyor.\nDuygular: huzursuzluk, kaygı, korku, öfke\nKatılımcılara bu alanlarda en çok hangi duyguları hissettikleri sorulduğunda çok güçlü ve yoğun cevaplar geldi. Huzursuzluk, kaygı, stres, korku ve endişe öne çıkan duygulardı. Bir katılımcı şöyle dedi:\n“Benim içimde bir huzursuzluk oluyor genelde, sabah da olsa bu, akşam da olsa.”\nBir başka katılımcı bu duyguyu bedenindeki davranışlarla anlattı: “Kulaklığımın tekini çıkararak yolda yürüyorum ya da çantama biraz daha sarılıyorum.”\nKaygı ve tetikte olma hali başka bir katılımcı tarafından şöyle tarif edildi: “İstemsizce hızlı yürüme ya da bir anahtarlığa, bir telefona, bir şeye sarılma ihtiyacı çok fazla duyuyorum.”\nBir başka katılımcı bu duyguları daha doğrudan isimlendirdi: “Bence kaygı, stres ve endişe duygularını uyandırıyor.”\nDiğer yandan bazı katılımcılar yalnızca korku değil, öfke de hissettiklerini anlattı: “İlk başta korkuyu çok hissediyorum. Başıma çok kötü bir şey gelecekmiş gibi hissediyorum. Eğer daha münasip bir yerdeysem ya da etrafımda insan varsa çok fazla öfke hissediyorum. Kendimi korumak için de bu öfkeyi yansıtıyorum.”\nBu ifadeler, güvensizliğin yalnızca fiziksel bir tehdit değil; aynı zamanda yoğun bir duygusal yük olduğunu açıkça ortaya koyuyor.\nGündelik savunma stratejileri\nAtölyenin belki de en çarpıcı bölümlerinden biri, katılımcıların kendilerini korumak için geliştirdikleri stratejileri anlatmalarıydı. Bu stratejiler bazen kıyafet seçiminden, bazen yürüyüş hızından, bazen de doğrudan savunma araçları taşımaktan oluşuyordu. Bir katılımcı şöyle dedi: “Akşama kalacaksam, hava kararıncaya kadar kalacaksam mutlaka üstüme uzun bir şey giyiyorum.”\nBaşka bir katılımcı bunu daha sert biçimde ifade etti: “Gideceğim lokasyona göre önce kıyafet tercihimi düzenliyorum. Bu çok saçma. Asla mantıklı bulduğum bir şey değil.” Aynı katılımcı savunma reflekslerini şöyle anlattı: “Anahtarlık gibi metal, belki biraz saldırgan olabilecek boyutta bana bir şey olduğunda karşılık verebileceğim bir unsur mutlaka cebimde yer alıyor.”\n“Çantamın içerisindeki her taşıdığım şey bir saldırı anında nasıl efektif kullanabilirim diye düşünmeye başladım. Buna deodorant dahil.”\nBir başka katılımcı ise ekonomik boyutu da olan bir stratejiden söz etti: “Toplu taşımayı kullanmayı azaltmaya başladım. Bu daha çok pahalıya mal oluyor benim için.” Ve devam etti: “Yolumun değiştiriyorum. Daha çok zaman harcıyorum.”\n“Belirli bir saatten sonra korkuyorsam taksiye binmek zorunda kalıyorum.”\nBu ifadeler, kadınların kentte güvenli hissetmek için yalnızca psikolojik değil, aynı zamanda ekonomik ve zamansal bedeller de ödediğini gösteriyor.\nSonuç\nBu atölye, kentte güvenlik deneyiminin tek bir olaydan ibaret olmadığını açıkça gösterdi. Güvensizlik; takip edilmek, bakışlara maruz kalmak, rotaları değiştirmek, kıyafeti yeniden düşünmek, eve dönüş saatini planlamak ve sürekli tetikte olmak gibi birçok küçük ama etkili pratik üzerinden yaşanıyor. Katılımcıların sözleri, kentin görünmez sınırlarının yalnızca haritalarda değil; bedenlerde, duygularda ve gündelik alışkanlıklarda kurulduğunu gösteriyor. Bu nedenle kentte güvenlik meselesi yalnızca fiziksel alanların değil, aynı zamanda sosyal ilişkilerin, duyguların ve gündelik kararların da konusu.\nCall to Action\nSiz de şehirde yürürken rotanızı değiştirdiğiniz, daha hızlı yürüdüğünüz ya da kendinizi daha dikkatli hissettiğiniz anlar yaşadınız mı? Deneyimlerinizi paylaşarak kentin görünmez sınırlarını birlikte daha görünür hale getirebiliriz."}, {"title": "Kentte Hayatta Kalma Stratejileri: Kadınlar Şehirde Nasıl Hareket Ediyor?", "snippet": "Kentte güvenlik çoğu zaman resmi istatistikler, suç oranları veya haberler üzerinden tartışılır. Ancak gündelik hayatta güvenlik hissi çok daha küçük ve görünmez davranışlarla şekillenir. Bir sokağı tercih etmek ya da etmemek, eve dönüş saatini planlamak,...", "content": "Giriş\nKentte güvenlik çoğu zaman resmi istatistikler, suç oranları veya haberler üzerinden tartışılır. Ancak gündelik hayatta güvenlik hissi çok daha küçük ve görünmez davranışlarla şekillenir. Bir sokağı tercih etmek ya da etmemek, eve dönüş saatini planlamak, yürürken kulaklığı çıkarmak ya da çantayı daha sıkı tutmak gibi davranışlar çoğu zaman bu deneyimin bir parçasıdır.\nKentin Görünmez Sınırları projesi kapsamında gerçekleştirilen odak grup atölyesinde katılımcılar, şehirde kendilerini güvende hissetmek için geliştirdikleri bu gündelik stratejileri paylaştılar. Bu stratejiler bazen bilinçli kararlar, bazen de zamanla öğrenilmiş refleksler olarak ortaya çıkıyordu.\nBu yazı, atölyede ortaya çıkan başlıca güvenlik stratejilerini ele alarak kadınların kentte hareket ederken geliştirdiği gündelik pratikleri görünür kılmayı amaçlıyor.\nKıyafet Seçimi Bir Güvenlik Stratejisine Dönüşüyor\nAtölyede en sık dile getirilen konulardan biri kıyafet seçimiydi. Birçok katılımcı, gidecekleri yere veya bulundukları saate göre kıyafetlerini yeniden düşündüklerini ifade etti. Bu durum çoğu zaman bilinçli bir güvenlik stratejisi olarak ortaya çıkıyor. Katılımcılardan biri bu durumu şöyle ifade etti: “Gideceğim lokasyona göre önce kıyafet tercihimi düzenliyorum.” Aynı katılımcı bu davranışı mantıklı bulmadığını da özellikle vurguladı: “Bu çok saçma. Asla mantıklı bulduğum bir şey değil.”\nBaşka bir katılımcı da benzer şekilde kıyafet seçiminde bulunduğu mekânın etkili olduğunu söyledi: “Gittiğim semte, konuma, mekâna göre kıyafet kombinime dikkat ediyorum.”\nBu ifadeler, kadınların kentte hareket ederken yalnızca mekânı değil, kendi görünürlüklerini de düşünmek zorunda kaldıklarını gösteriyor.\nRota Değiştirmek ve Zamanı Planlamak\nAtölyede ortaya çıkan bir diğer önemli strateji rota değiştirmekti. Katılımcılar, bazı sokaklardan özellikle kaçındıklarını ya da daha uzun yolları tercih ettiklerini anlattı. Bir katılımcı bu durumu şöyle açıkladı: “Yolumu değiştiriyorum. Daha çok zaman harcıyorum.”\nBenzer şekilde bazı katılımcılar akşam saatlerinde ulaşım tercihlerini değiştirdiklerini de ifade etti. Toplu taşıma yerine taksi kullanmak, daha kalabalık yolları tercih etmek ya da eve dönüş saatini erkene çekmek bu stratejiler arasında yer alıyordu. Bir katılımcı bunu şöyle anlattı: “Belirli bir saatten sonra korkuyorsam taksiye binmek zorunda kalıyorum.”\nBu tür kararlar çoğu zaman bireysel tercihler gibi görünse de aslında güvenlik hissi ile doğrudan ilişkilidir.\nSürekli Tetikte Olma Hali\nAtölye boyunca katılımcılar yalnızca fiziksel stratejilerden değil, zihinsel hazırlık halinden de söz etti. Birçok kişi şehirde yürürken çevresini sürekli kontrol ettiğini ve tetikte olduğunu ifade etti.\nBir katılımcı bunu şöyle anlattı: “Kulaklığımın tekini çıkararak yolda yürüyorum ya da çantama biraz daha sarılıyorum.”\nBir başka katılımcı ise bu davranışların zamanla alışkanlığa dönüştüğünü söyledi: “Bu artık öğrenilmiş bir kalıp gibi olmaya başladı.”\nBu ifadeler, güvenlik stratejilerinin yalnızca belirli durumlarda değil, gündelik hayatın birçok anında devreye girdiğini gösteriyor.\nKendini Savunma Araçları Taşımak\nAtölyede ortaya çıkan en dikkat çekici pratiklerden biri de katılımcıların yanlarında çeşitli savunma araçları taşımalarıydı. Biber gazı, çakı veya anahtarlık gibi nesneler birçok katılımcı tarafından güvenlik amacıyla taşınıyordu.Bir katılımcı bunu şöyle anlattı: “Yanımda mutlaka biber gazı taşıyorum. Çakı taşıyorum.”\nBaşka bir katılımcı ise çantasındaki nesnelere farklı bir gözle bakmaya başladığını söyledi: “Çantamın içerisindeki her taşıdığım şey bir saldırı anında nasıl efektif kullanabilirim diye düşünmeye başladım. Buna deodorant dahil.”\nBu tür ifadeler, gündelik eşyaların bile bir savunma aracına dönüşebildiğini gösteriyor.\nEkonomik ve Zaman Maliyeti\nKatılımcıların paylaştığı stratejiler yalnızca fiziksel davranışlarla sınırlı değildi. Bu stratejilerin bazıları ekonomik ve zamansal maliyetler de yaratıyordu.Örneğin bir katılımcı toplu taşıma kullanmayı azalttığını söyledi: “Toplu taşımayı kullanmayı azaltmaya başladım. Bu daha çok pahalıya mal oluyor benim için.”\nBu ifade güvenlik stratejilerinin yalnızca bireysel davranışlar olmadığını, aynı zamanda maddi sonuçlar da doğurabildiğini gösteriyor.\nSonuç\nOdak grup atölyesinde ortaya çıkan anlatılar, kadınların kentte güvenli hissetmek için birçok farklı strateji geliştirdiğini gösteriyor. Kıyafet seçiminden rota değiştirmeye, savunma araçları taşımaktan ulaşım tercihlerini değiştirmeye kadar uzanan bu pratikler, kentte hareket etmenin çoğu zaman görünmeyen bir planlama süreci içerdiğini ortaya koyuyor.\nBu stratejiler çoğu zaman bireysel çözümler gibi görünse de aslında daha geniş bir güvenlik meselesinin parçasıdır. Kadınların kentte özgürce hareket edebilmesi yalnızca bireysel önlemlerle değil, daha güvenli ve kapsayıcı kamusal alanların oluşturulmasıyla mümkün olabilir."}];</script>
+  <script src="script.js"></script>
 </body>
-
 </html>
-
